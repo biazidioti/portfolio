@@ -14,7 +14,7 @@ import { LOADING, GET_API_SUCCESS,
         };
       case GET_API_SUCCESS:
         return {
-          ...state, currencies: action.payload,
+          ...state, characters: action.payload,
         };
       case FINISH_LOADING:
         return {

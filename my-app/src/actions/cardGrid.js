@@ -21,10 +21,11 @@ export const getAPISuccess = (payload) => ({
 
 export const getAPIThunk = () => (dispatch) => {
   dispatch(loading());
-  fetchAPI().then((response) => {
-    const apiData = Object.keys(response);
-    dispatch(getAPISuccess(apiData));
-    dispatch(finishLoading());
-    console.log(apiData);
-  }).catch(() => { dispatch(getAPISuccess([])); }); // Quando tiver um erro, retorna um array vazio
+  return fetchAPI('').then((response) => (response.json())).then((data) => {
+    console.log(data)
+    const results = data.data.results;
+    console.log(results);
+    dispatch(getAPISuccess(results));
+    dispatch(finishLoading());   
+  }).catch(() => { dispatch(getAPISuccess([])); }); // Quando tiver um erro, retorna um array vazio */
 };

@@ -1,14 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { getAPIThunk } from '../actions/cardGrid';
 
 class Cards extends React.Component {
+  componentDidMount() {
+    this.props.meuFetch();
+  }
   render() {
-    const { characters: { name } } = this.props;
+  
+   const { characters } = this.props;
+
     return (
         <div>
           <h1>Marvel's Character</h1>
-          <h2>{ name }</h2>
+          {characters.map((character) => (
+            <>
+            <p>{ character.name }</p>
+            <img href={ character.thumbnail.path } alt="character-name"/>
+            </>
+          ))}
         </div>
      
     )
@@ -17,10 +28,15 @@ class Cards extends React.Component {
 
 const mapStateToProps = (state) => ({
   characters: state.cardGrid.characters,
+  isLoading: state.cardGrid.isLoading,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  meuFetch: () => dispatch(getAPIThunk())
 });
 
 Cards.propTypes = {
   characters: PropTypes.arrayOf.isRequired,
 };
 
-export default connect(mapStateToProps, null)(Cards);
+export default connect(mapStateToProps, mapDispatchToProps)(Cards);
