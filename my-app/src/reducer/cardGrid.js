@@ -1,5 +1,5 @@
 import { LOADING, GET_API_SUCCESS,
-  FINISH_LOADING } from '../actions/wallet';
+  FINISH_LOADING } from '../actions/cardGrid';
 
   const INITIAL_STATE = {
     characters: [],

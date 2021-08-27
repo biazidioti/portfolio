@@ -1,4 +1,6 @@
 import React from 'react';
+
+import { fetchFromCharactersEndpoint } from './services/endpoints';
 /* import './App.css'; */
 
 /* function App() {
@@ -13,6 +15,7 @@ import React from 'react';
 
 class App extends React.Component {
   render() {
+    
     return <h1>Marvel's Characters</h1>;
   }
 }
