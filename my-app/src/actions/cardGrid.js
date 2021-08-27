@@ -1,4 +1,4 @@
-import fetchAPI from '../services/fecthAPI';
+import fetchAPI from '../services/endpoints';
 
 export const LOADING = 'LOADING';
 
@@ -25,5 +25,6 @@ export const getAPIThunk = () => (dispatch) => {
     const apiData = Object.keys(response);
     dispatch(getAPISuccess(apiData));
     dispatch(finishLoading());
+    console.log(apiData);
   }).catch(() => { dispatch(getAPISuccess([])); }); // Quando tiver um erro, retorna um array vazio
 };

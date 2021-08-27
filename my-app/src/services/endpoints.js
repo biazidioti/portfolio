@@ -5,7 +5,7 @@ import { PUBLIC_KEY } from "./keys";
 const BASE_URL = 'http://gateway.marvel.com/v1/public/';
 const CHARACTERS_ENDPOINT = 'characters?';
 
-export const fetchFromCharactersEndpoint = (query) => {
+export const fetchAPI = (query) => {
   const timestamp = new Date().getTime();
   const hash = createHash(timestamp);
   const auth = `&ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`;
@@ -13,4 +13,4 @@ export const fetchFromCharactersEndpoint = (query) => {
   return fetch(url);
 }
 
-fetchFromCharactersEndpoint('').then(r => r.json()).then(console.log)
+export default fetchAPI;

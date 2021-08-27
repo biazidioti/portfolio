@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 
 class Cards extends React.Component {
   render() {
-    // const { characters } = this.props;
+    const { characters: { name } } = this.props;
     return (
-      <section>
         <div>
+          <h1>Marvel's Character</h1>
+          <h2>{ name }</h2>
         </div>
-      </section>
+     
     )
   }
 }
